@@ -23,7 +23,7 @@ Arvore(){
 };
 
 //funcs
-int insert(Arvore arv, int posicao){
+int insert(Arvore arv, ){
 
 }
 
