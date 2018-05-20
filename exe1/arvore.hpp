@@ -10,21 +10,29 @@ template<class T> struct Arvore{
 //variaveis
  private:
   std::vector<Arvore> arvores;
+
  public:
   T valor;
 
+//metodos
+  void inserir(T v){
+    Arvore* nova = new Arvore({this}, v);
+    return nova;
+  };
+
 //construtor
-Arvore(){
- std::cout << "Arvore construída com sucesso!" << std::endl;
+ Arvore(){
+
  }
  Arvore(std::vector<Arvore> a, const T& v)
-  : arvores(a), valor(v) {
- }
-};
-
-//funcs
-int insert(Arvore arv, ){
+ : arvores(a), valor(v) {
 
 }
+
+//destrutor
+ ~Arvore(){
+     std::cout << "Arvore destruída com sucesso!" << std::endl;
+ }
+};
 
 #endif // __arvore_hpp

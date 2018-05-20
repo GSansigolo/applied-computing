@@ -6,25 +6,37 @@
 
         std::cout << "Lista 1 - Exercicio 2 [ Gabriel Sansigolo ]" << "\n \n";
 
-        //testando o contrutor da arvore para diferentes tipos de dados
-        std::cout << "Teste Construtores" << "\n";
+        //declaração das diferentes arvores
         Arvore<std::string> arvString;
         Arvore<int> arvInt;
         Arvore<double> arvDouble;
 
-        //testando busca de uma string na arvString
-        std::cout << "Teste Busca" << "\n";
-        busca();
+        //teste do contrutor para diferentes tipos de dados
+        std::cout << "Teste Construtores" << "\n";
+        std::cout << sizeof(arvString) << std::endl;
+        std::cout << sizeof(arvInt) << std::endl;
+        std::cout << sizeof(arvDouble) << std::endl;
 
-        //tstando inserção de um int na arvInt
-        std::cout << "Teste Inserção" << "\n";
-        insercao();
+        //teste do metodo de inserção
+        std::cout << "\nTeste Inserção" << "\n";
+        arvInt.inserir(&arvInt,1);
+        arvDouble.inserir(&arvDouble, 3.14);
+        arvString.inserir(&arvString, "João");
 
-        //testando remoção de um double na arvDouble
-        std::cout << "Teste Remoção" << "\n";
-        remocao();
+        //teste do metodo de busca
+        std::cout << "\nTeste Busca" << "\n";
+        arvInt.busca(&arvInt, 1);
+        arvDouble.busca(&arvDouble, 3.14);
+        arvString.busca(&arvString, "Joao");
 
-        std::cout << "\n";
+        //teste do metodo de remoção
+        std::cout << "\nTeste Remoção" << "\n";
+        arvInt.destruir(&arvInt,2);
+        arvDouble.destruir(&arvDouble,2.33);
+        arvString.destruir(&arvString,"Maria");
+
+        //teste do destrutor
+        std::cout << "\nTeste Destrutores" << "\n";
 
         return 0;
     }

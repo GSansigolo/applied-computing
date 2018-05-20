@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_BUILD_TYPE Debug)
 
-project(exe2)
+project(exe3)
 
 file(GLOB SRC_FILES ./*.cpp)
 file(GLOB HDR_FILES ./*.hpp)
