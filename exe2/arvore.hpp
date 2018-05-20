@@ -25,8 +25,19 @@ template<class T> struct Arvore{
       }
       return (v < arv->valor) ? busca(arv->esquerda, v) : busca(arv->direita, v);
   }
-
-
+   Arvore* inserir(Arvore *arv, T v){
+       if(&arv != nullptr){
+           Arvore* nova = new Arvore(nullptr, nullptr, v);
+           *arv = *nova;
+           std::cout << "Arvore inserida com sucesso!" << std::endl;
+           return arv;
+       }
+       if (v < arv->valor){
+           arv->esquerda = inserir(arv->esquerda, v);
+       } else {
+           arv->direita = inserir(arv->direita, v);
+       }
+   }
 
  //construtor
  Arvore() : esquerda(this), direita(this) {

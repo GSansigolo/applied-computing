@@ -19,15 +19,18 @@
 
         //teste do metodo de inserção
         std::cout << "\nTeste Inserção" << "\n";
-        arvInt.inserir(&arvInt,1);
-        arvDouble.inserir(&arvDouble, 3.14);
+        arvInt.inserir(&arvInt, 1);
+        arvInt.inserir(&arvInt, 2);
+        arvDouble.inserir(&arvDouble, 2.44);
+        arvDouble.inserir(&arvDouble, 3.55);
         arvString.inserir(&arvString, "João");
+        arvString.inserir(&arvString, "Maria");
 
         //teste do metodo de busca
         std::cout << "\nTeste Busca" << "\n";
-        arvInt.busca(&arvInt, 1);
-        arvDouble.busca(&arvDouble, 3.14);
-        arvString.busca(&arvString, "Joao");
+        arvInt.busca(&arvInt, 2);
+        arvDouble.busca(&arvDouble, 3.55);
+        arvString.busca(&arvString, "Maria");
 
         //teste do metodo de remoção
         std::cout << "\nTeste Remoção" << "\n";
