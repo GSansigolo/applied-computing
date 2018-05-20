@@ -12,10 +12,10 @@ template<class T> struct Arvore{
   T valor;
 
   //metodos
-   Arvore* destruir(Arvore *arv, T v){
+  Arvore* destruir(Arvore *arv, T v){
           std::cout << "~" << std::endl;
     }
-   Arvore* busca(Arvore *arv, T v) const {
+  Arvore* busca(Arvore *arv, T v) const {
       if(arv == nullptr){
           return nullptr;
       }
@@ -25,7 +25,7 @@ template<class T> struct Arvore{
       }
       return (v < arv->valor) ? busca(arv->esquerda, v) : busca(arv->direita, v);
   }
-   Arvore* inserir(Arvore *arv, T v){
+  Arvore* inserir(Arvore *arv, T v){
        if(arv == nullptr){
            Arvore* nova = new Arvore(nullptr, nullptr, v);
            std::cout << "Arvore inserida com sucesso!" << std::endl;
@@ -37,6 +37,44 @@ template<class T> struct Arvore{
            arv->direita = inserir(arv->direita, v);
        }
    }
+  void printPreOrder(Arvore *arv){
+        if(arv == nullptr){
+            return;
+        }
+        std::cout << arv->valor << " ";
+        printPreOrder(arv->esquerda);
+        printPreOrder(arv->direita);
+    }
+  void printInOrder(Arvore *arv){
+        if(arv == nullptr){
+            return;
+        }
+        printInOrder(arv->esquerda);
+        std::cout << arv->valor << " ";
+        printInOrder(arv->direita);
+    }
+  void printPosOrder(Arvore *arv){
+        if(arv == nullptr){
+            return;
+        }
+        printPosOrder(arv->esquerda);
+        printPosOrder(arv->direita);
+        std::cout << arv->valor << " ";
+    }
+  int altura(Arvore *arv){
+      if(arv == nullptr){
+          return 0;
+      } else {
+          //posorder
+          int alturaEsq = altura(arv->esquerda);
+          int alturaDir = altura(arv->direita);
+          if(alturaEsq > alturaDir){
+              return alturaEsq+1;
+          } else{
+              return alturaDir+1;
+          }
+      }
+  }
 
  //construtor
  Arvore(const T v)

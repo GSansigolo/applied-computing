@@ -4,7 +4,7 @@
     //main
     int main(){
 
-        std::cout << "Lista 1 - Exercicio 3 [ Gabriel Sansigolo ]" << "\n \n";
+        std::cout << "Lista 1 - Exercicio 4 [ Gabriel Sansigolo ]" << "\n \n";
 
         //declaração das diferentes arvores
         Arvore<int> arvInt(5);
@@ -20,26 +20,14 @@
         arvInt.inserir(&arvInt, 1);
         arvInt.inserir(&arvInt, 10);
         arvDouble.inserir(&arvDouble, 1.44);
+        arvDouble.inserir(&arvDouble, 3.55);
         arvDouble.inserir(&arvDouble, 10.55);
 
 
-        //teste do metodo print preorder
-        std::cout << "\npreOrder" << "\n";
-        arvInt.printPreOrder(&arvInt);
-        std::cout << "\n";
-        arvDouble.printPreOrder(&arvDouble);
-
-        //teste do metodo print inorder
-        std::cout << "\n\ninOrder" << "\n";
-        arvInt.printInOrder(&arvInt);
-        std::cout << "\n";
-        arvDouble.printInOrder(&arvDouble);
-
-        //teste do metodo print posorder
-        std::cout << "\n\nposOrder" << "\n";
-        arvInt.printPosOrder(&arvInt);
-        std::cout << "\n";
-        arvDouble.printPosOrder(&arvDouble);
+        //teste do metodo altura
+        std::cout << "\n\nTeste Altura" << "\n";
+        std::cout << arvInt.altura(&arvInt) << "\n";
+        std::cout << arvDouble.altura(&arvDouble);
 
         //teste do destrutor
         std::cout << "\n\nTeste Destrutores" << "\n";

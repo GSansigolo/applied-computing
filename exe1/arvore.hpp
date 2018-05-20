@@ -15,10 +15,10 @@ template<class T> struct Arvore{
   T valor;
 
 //metodos
-  void inserir(T v){
+ void inserir(T v){
     Arvore* nova = new Arvore({this}, v);
     return nova;
-  };
+ }
 
 //construtor
  Arvore(){

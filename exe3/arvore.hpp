@@ -26,11 +26,10 @@ template<class T> struct Arvore{
       return (v < arv->valor) ? busca(arv->esquerda, v) : busca(arv->direita, v);
   }
   Arvore* inserir(Arvore *arv, T v){
-       if(&arv != nullptr){
+       if(arv == nullptr){
            Arvore* nova = new Arvore(nullptr, nullptr, v);
-           *arv = *nova;
            std::cout << "Arvore inserida com sucesso!" << std::endl;
-           return arv;
+           return nova;
        }
        if (v < arv->valor){
            arv->esquerda = inserir(arv->esquerda, v);
@@ -39,32 +38,33 @@ template<class T> struct Arvore{
        }
    }
   void printPreOrder(Arvore *arv){
-     if(arv == nullptr){
-         return;
-     }
-     std::cout << arv->valor << " ";
-     printPreOrder(arv->esquerda);
-     printPreOrder(arv->direita);
- }
+        if(arv == nullptr){
+            return;
+        }
+        std::cout << arv->valor << " ";
+        printPreOrder(arv->esquerda);
+        printPreOrder(arv->direita);
+    }
   void printInOrder(Arvore *arv){
-     if(arv == nullptr){
-         return;
-     }
-     printInOrder(arv->esquerda);
-     std::cout << arv->valor << " ";
-     printInOrder(arv->direita);
- }
+        if(arv == nullptr){
+            return;
+        }
+        printInOrder(arv->esquerda);
+        std::cout << arv->valor << " ";
+        printInOrder(arv->direita);
+    }
   void printPosOrder(Arvore *arv){
-     if(arv == nullptr){
-         return;
-     }
-     printPosOrder(arv->esquerda);
-     printPosOrder(arv->direita);
-     std::cout << arv->valor << " ";
- }
+        if(arv == nullptr){
+            return;
+        }
+        printPosOrder(arv->esquerda);
+        printPosOrder(arv->direita);
+        std::cout << arv->valor << " ";
+    }
 
  //construtor
- Arvore() : esquerda(this), direita(this) {
+ Arvore(const T v)
+ : esquerda(nullptr), direita(nullptr), valor(v) {
 }
  Arvore(Arvore *e, Arvore* d, const T v)
  : esquerda(e), direita(d), valor(v) {
