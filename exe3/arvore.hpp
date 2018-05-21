@@ -8,7 +8,7 @@ template<class T> struct Arvore{
   Arvore *esquerda;
   Arvore *direita;
 
- public:
+public:
   T valor;
 
   //metodos
@@ -37,45 +37,58 @@ template<class T> struct Arvore{
            arv->direita = inserir(arv->direita, v);
        }
    }
-  void printPreOrder(Arvore *arv){
+  void PreOrder(Arvore *arv, void (&f)(T)){
         if(arv == nullptr){
             return;
         }
-        std::cout << arv->valor << " ";
-        printPreOrder(arv->esquerda);
-        printPreOrder(arv->direita);
+        f(arv->valor);
+        std::cout << " ";
+        PreOrder(arv->esquerda, f);
+        PreOrder(arv->direita, f);
     }
-  void printInOrder(Arvore *arv){
+  void InOrder(Arvore *arv, void (&f)(T)){
         if(arv == nullptr){
             return;
         }
-        printInOrder(arv->esquerda);
-        std::cout << arv->valor << " ";
-        printInOrder(arv->direita);
+        InOrder(arv->esquerda, f);
+        f(arv->valor);
+        std::cout << " ";
+        InOrder(arv->direita, f);
     }
-  void printPosOrder(Arvore *arv){
+  void PosOrder(Arvore *arv, void (&f)(T)){
         if(arv == nullptr){
             return;
         }
-        printPosOrder(arv->esquerda);
-        printPosOrder(arv->direita);
-        std::cout << arv->valor << " ";
+        PosOrder(arv->esquerda, f);
+        PosOrder(arv->direita, f);
+        f(arv->valor);
+        std::cout << " ";
     }
 
- //construtor
- Arvore(const T v)
- : esquerda(nullptr), direita(nullptr), valor(v) {
-}
+  //construtor
+  Arvore(const T v)
+  : esquerda(nullptr), direita(nullptr), valor(v) {
+ }
  Arvore(Arvore *e, Arvore* d, const T v)
  : esquerda(e), direita(d), valor(v) {
-}
+ }
 
 //destrutor
  ~Arvore(){
      std::cout << "Arvore destruída com sucesso!" << std::endl;
  }
 
+
 };
 
+//funcoes
+
+void imprimi_i(int v){
+    std::cout << v << ' ';
+}
+
+void imprimi_d(double g){
+    std::cout << g << ' ';
+}
 
 #endif // __arvore_hpp

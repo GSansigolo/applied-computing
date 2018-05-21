@@ -25,21 +25,21 @@
 
         //teste do metodo print preorder
         std::cout << "\npreOrder" << "\n";
-        arvInt.printPreOrder(&arvInt);
+        arvInt.PreOrder(&arvInt, imprimi_i);
         std::cout << "\n";
-        arvDouble.printPreOrder(&arvDouble);
+        arvDouble.PreOrder(&arvDouble, imprimi_d);
 
         //teste do metodo print inorder
         std::cout << "\n\ninOrder" << "\n";
-        arvInt.printInOrder(&arvInt);
+        arvInt.InOrder(&arvInt, imprimi_i);
         std::cout << "\n";
-        arvDouble.printInOrder(&arvDouble);
+        arvDouble.InOrder(&arvDouble, imprimi_d);
 
         //teste do metodo print posorder
         std::cout << "\n\nposOrder" << "\n";
-        arvInt.printPosOrder(&arvInt);
+        arvInt.PosOrder(&arvInt, imprimi_i);
         std::cout << "\n";
-        arvDouble.printPosOrder(&arvDouble);
+        arvDouble.PosOrder(&arvDouble, imprimi_d);
 
         //teste do destrutor
         std::cout << "\n\nTeste Destrutores" << "\n";
