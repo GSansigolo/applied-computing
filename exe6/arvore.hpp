@@ -39,29 +39,27 @@ public:
       Arvore* nova = new Arvore(nullptr, nullptr, 0, 0);
       return nova;
   }
-  Arvore* insert_kdtree(Arvore *arv, T x, T y){
+  Arvore* insert_kdtree(Arvore *arv, T x, T y, int i){
       if(arv == nullptr){
           Arvore* nova = new Arvore(nullptr, nullptr, x, y);
            std::cout << "Arvore inserida com sucesso!" << std::endl;
            return nova;
        }
-       if (x < arv->x){
-           if (y < arv->y){
-                arv->esquerda = insert_kdtree(arv->esquerda, x, y);
-           } else {
-               arv->direita = insert_kdtree(arv->direita, x, y);
-           }
-
-       } else {
-           if (y < arv->y){
-                arv->esquerda = insert_kdtree(arv->esquerda, x, y);
-           } else {
-               arv->direita = insert_kdtree(arv->direita, x, y);
-           }
-
-       }
+      if(i%2==0){
+          if (x >= arv->x){
+               arv->direita = insert_kdtree(arv->direita, x, y, i+1);
+          }else{
+               arv->esquerda = insert_kdtree(arv->esquerda, x, y, i+1);
+          }
+      } else {
+          if (y >= arv->y){
+              arv->direita = insert_kdtree(arv->direita, x, y, i+1);
+          }else{
+               arv->esquerda = insert_kdtree(arv->esquerda, x, y, i+1);
+          }
+      }
    }
-  Arvore* find_kdtree(Arvore *arv, T x, T y) const {
+  Arvore* find_kdtree(Arvore *arv, T x, T y, int i) const {
         if(arv == nullptr){
             return nullptr;
         }
@@ -69,22 +67,25 @@ public:
             std::cout << "Arvore encontrada com sucesso!" << std::endl;
             return arv;
         }
-         if (x < arv->x){
-           if (y < arv->y){
-                arv->esquerda = find_kdtree(arv->esquerda, x, y);
-           } else {
-               arv->direita = find_kdtree(arv->direita, x, y);
-           }
-
-       } else {
-           if (y < arv->y){
-                arv->esquerda = find_kdtree(arv->esquerda, x, y);
-           } else {
-               arv->direita = find_kdtree(arv->direita, x, y);
-           }
-       }
+        if(i%2==0){
+            if (x < arv->x){
+                 arv->direita = find_kdtree(arv->direita, x, y, i+1);
+            }else{
+                 arv->esquerda = find_kdtree(arv->esquerda, x, y, i+1);
+            }
+        } else {
+            if (y < arv->y){
+                arv->direita = find_kdtree(arv->direita, x, y, i+1);
+            }else{
+                 arv->esquerda = find_kdtree(arv->esquerda, x, y, i+1);
+            }
+        }
     }
-  Arvore* search_kdtree(Arvore *arv, retangulo *ret) const {
+  void search_kdtree(Arvore *arv, retangulo *ret, int i) const {
+
+      if(arv == nullptr){
+          return;
+      }
 
       //declara array x e array y
       double list_x[4] = { ret->x1, ret->x2, ret->x3, ret->x4 };
@@ -96,10 +97,37 @@ public:
       double max_y = * std::max_element(list_y, list_y+4);
       double min_y = * std::min_element(list_y, list_y+4);
 
-      return arv;
+      //verifica se o ponto está no reatangulo
+      if(arv->x >= min_x){
+          if(arv->x <= max_x){
+              if(arv->y >= min_y){
+                  if(arv->y <= max_y){
+                      std::cout << "(" << arv->x <<"," << arv->y << ")\n";
+                  }
+              }
+          }
+      }
 
+      //percore a arvore
+      if(i%2==0){
+          if(arv->x > min_x){
+              search_kdtree(arv->esquerda, ret, i+1);
+          }
+          if(arv->x < max_x){
+              search_kdtree(arv->direita, ret, i+1);
+          }
+      } else {
+          if(arv->y > min_y){
+              search_kdtree(arv->esquerda, ret, i+1);
+          }
+          if(arv->y < max_y){
+              search_kdtree(arv->direita, ret, i+1);
+          }
+      }
     }
+  Arvore* clear(){
 
+  }
   //construtor
   Arvore(const T Ax, const T Ay)
   : esquerda(nullptr), direita(nullptr), x(Ax), y(Ay) {

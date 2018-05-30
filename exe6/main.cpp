@@ -15,15 +15,15 @@
 
         //teste da função insert(kdtree, point)
         std::cout << "\nTeste da função insert(kdtree, point)" << "\n";
-        kdtree.insert_kdtree(&kdtree, 1, 7);
-        kdtree.insert_kdtree(&kdtree, 1, 1);
-        kdtree.insert_kdtree(&kdtree, 7, 7);
-        kdtree.insert_kdtree(&kdtree, 7, 1);
+        kdtree.insert_kdtree(&kdtree, 1, 7, 0);
+        kdtree.insert_kdtree(&kdtree, 1, 1, 0);
+        kdtree.insert_kdtree(&kdtree, 7, 7, 0);
+        kdtree.insert_kdtree(&kdtree, 7, 1, 0);
 
         //teste da função find(kdtree, point)
         std::cout << "\nTeste da função find(kdtree, point)" << "\n";
-        kdtree.find_kdtree(&kdtree, 1, 1);
-        kdtree.find_kdtree(&kdtree, 7, 7);
+        kdtree.find_kdtree(&kdtree, 1, 1, 0);
+        kdtree.find_kdtree(&kdtree, 7, 7, 0);
 
         //teste da função search(kdtree, rectangle)
         std::cout << "\nTeste da função search(kdtree, rectangle)" << "\n";
@@ -36,11 +36,13 @@
         ret.y3 = 5;
         ret.x4 = 1;
         ret.y4 = 5;
-        kdtree.search_kdtree(&kdtree, &ret);
-        //kdtree.search_kdtree();
+        kdtree.search_kdtree(&kdtree, &ret, 0);
+
+        //teste da função clear(kdtree)
+        std::cout << "\nTeste da função clear(kdtree)" << "\n";
 
         //teste do destrutor
-        std::cout << "\n\nTeste Destrutores" << "\n";
+        std::cout << "\nTeste Destrutores" << "\n";
 
         return 0;
     }
