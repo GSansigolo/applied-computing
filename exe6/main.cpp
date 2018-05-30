@@ -15,13 +15,29 @@
 
         //teste da função insert(kdtree, point)
         std::cout << "\nTeste da função insert(kdtree, point)" << "\n";
-        kdtree.insert_kdtree(&kdtree, 6, 6);
-        kdtree.insert_kdtree(&kdtree, 4, 4);
-        kdtree.insert_kdtree(&kdtree, 3, 6);
-        kdtree.insert_kdtree(&kdtree, 7, 4);
+        kdtree.insert_kdtree(&kdtree, 1, 7);
+        kdtree.insert_kdtree(&kdtree, 1, 1);
+        kdtree.insert_kdtree(&kdtree, 7, 7);
+        kdtree.insert_kdtree(&kdtree, 7, 1);
 
         //teste da função find(kdtree, point)
-        std::cout << "\nTeste da função find(kdtree, point))" << "\n";
+        std::cout << "\nTeste da função find(kdtree, point)" << "\n";
+        kdtree.find_kdtree(&kdtree, 1, 1);
+        kdtree.find_kdtree(&kdtree, 7, 7);
+
+        //teste da função search(kdtree, rectangle)
+        std::cout << "\nTeste da função search(kdtree, rectangle)" << "\n";
+        retangulo ret;
+        ret.x1 = 1;
+        ret.y1 = 1;
+        ret.x2 = 1;
+        ret.y2 = 5;
+        ret.x3 = 5;
+        ret.y3 = 5;
+        ret.x4 = 1;
+        ret.y4 = 5;
+        kdtree.search_kdtree(&kdtree, &ret);
+        //kdtree.search_kdtree();
 
         //teste do destrutor
         std::cout << "\n\nTeste Destrutores" << "\n";
