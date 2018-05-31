@@ -28,15 +28,14 @@
 
         //teste do metodo de busca
         std::cout << "\nTeste Busca" << "\n";
-        arvInt.busca(&arvInt, 3);
-        arvDouble.busca(&arvDouble, 3.55);
+        arvInt.busca(&arvInt, 1);
+        arvDouble.busca(&arvDouble, 1.44);
         arvString.busca(&arvString, "João");
 
         //teste do metodo de remoção
         std::cout << "\nTeste Remoção" << "\n";
-        arvInt.destruir(&arvInt,2);
-        arvDouble.destruir(&arvDouble,2.33);
-        arvString.destruir(&arvString,"João");
+        arvInt.destruir(&arvInt, 5);
+        arvDouble.destruir(&arvDouble, 5.33);
 
         //teste do destrutor
         std::cout << "\nTeste Destrutores" << "\n";

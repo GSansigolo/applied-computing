@@ -13,7 +13,28 @@ template<class T> struct Arvore{
 
   //metodos
   Arvore* destruir(Arvore *arv, T v){
-          std::cout << "~" << std::endl;
+      if(arv == nullptr){
+          return nullptr;
+      }
+      if(arv->valor == v){
+          cleanPosOrder(arv);
+          std::cout << "Arvore removida com sucesso!" << std::endl;
+          return arv;
+      }
+      return (v < arv->valor) ? destruir(arv->esquerda, v) : destruir(arv->direita, v);
+   }
+  void cleanPosOrder(Arvore *arv){
+        if(arv == nullptr){
+            return;
+        }
+        cleanPosOrder(arv->esquerda);
+        cleanPosOrder(arv->direita);
+        if(arv->esquerda!=nullptr)
+            arv->esquerda=nullptr;
+        if(arv->direita!=nullptr)
+           arv->direita=nullptr;
+        arv = nullptr;
+        return;
     }
   Arvore* busca(Arvore *arv, T v) const {
       if(arv == nullptr){

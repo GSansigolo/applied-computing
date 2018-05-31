@@ -10,7 +10,7 @@
         Arvore<double> kdtree(5,5);
 
         //Teste do construtor
-        std::cout << "Teste da função New()" << "\n";
+        std::cout << "Teste da função new()" << "\n";
         std::cout << sizeof(kdtree) << std::endl;
 
         //teste da função insert(kdtree, point)
@@ -40,9 +40,10 @@
 
         //teste da função clear(kdtree)
         std::cout << "\nTeste da função clear(kdtree)" << "\n";
+        kdtree.clear(&kdtree, 5, 5, 0);
 
         //teste do destrutor
-        std::cout << "\nTeste Destrutores" << "\n";
+        std::cout << "\nTeste destrutor" << "\n";
 
         return 0;
     }

@@ -125,9 +125,43 @@ public:
           }
       }
     }
-  Arvore* clear(){
-
+  Arvore* clear(Arvore *arv, T x, T y, int i){
+      if(arv == nullptr){
+          return nullptr;
+      }
+      if(arv->x == x || arv->y == y){
+          cleanPosOrder(arv);
+          std::cout << "Arvore apagada com sucesso!\n";
+          return arv;
+      }
+      if(i%2==0){
+          if (x < arv->x){
+               arv->direita = find_kdtree(arv->direita, x, y, i+1);
+          }else{
+               arv->esquerda = find_kdtree(arv->esquerda, x, y, i+1);
+          }
+      } else {
+          if (y < arv->y){
+              arv->direita = find_kdtree(arv->direita, x, y, i+1);
+          }else{
+               arv->esquerda = find_kdtree(arv->esquerda, x, y, i+1);
+          }
+      }
   }
+  void cleanPosOrder(Arvore *arv){
+      if(arv == nullptr){
+          return;
+      }
+      cleanPosOrder(arv->esquerda);
+      cleanPosOrder(arv->direita);
+      if(arv->esquerda!=nullptr)
+          arv->esquerda=nullptr;
+      if(arv->direita!=nullptr)
+         arv->direita=nullptr;
+      arv = nullptr;
+      return;
+    }
+
   //construtor
   Arvore(const T Ax, const T Ay)
   : esquerda(nullptr), direita(nullptr), x(Ax), y(Ay) {

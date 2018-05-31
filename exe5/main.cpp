@@ -65,7 +65,7 @@
         std::cout << "" <<arvInt6.altura(&arvInt6) << "/" << (log2(1000000)) << "=" << arvInt6.altura(&arvInt6)/(log2(1000000)) << "\n";
 
         //teste do destrutor
-        std::cout << "\n\nTeste Destrutores" << "\n";
+        std::cout << "\nTeste Destrutores" << "\n";
 
         return 0;
     }
