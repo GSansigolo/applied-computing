@@ -6,26 +6,31 @@
     //main
     int main(){
 
-        std::cout << "Lista Complementar - Exercicio 1 [ Gabriel Sansigolo ]" << "\n \n";
+        std::cout << "Lista Complementar - Exercicio 1 [ Gabriel Sansigolo ]" << "\n\n";
 
-        //declaração arvore
-        Arvore<char> arv;
+        //-------------------------
+        //Criação Arvore
+        //-------------------------
+        struct ArvoreTrie *ArvoreTrie = criaArvore();
 
-        //teste do contrutor para diferentes tipos de dados
-        std::cout << "Teste Construtores" << "\n";
-        std::cout << sizeof(arv) << std::endl;
+        //-------------------------
+        //Testa Inserção
+        //-------------------------
+        std::cout << "Teste Inserção" << "\n";
+        std::string palavras[9] = {"ABACATE", "ABACAXI", "AMORA", "EMANUEL", "EMANUELE", "GILBERTO", "GILSON", "MANU", "MANUELA"};
+        for (int i = 0; i < 9; i++){
+            escreve(ArvoreTrie, palavras[i]);
+            std::cout << "concluida\n";
+        }
 
-        //teste do metodo de inserção
-        std::cout << "\nTeste Inserção" << "\n";
-        arv.escreve(&arv, "ABACATE", 7);
-        arv.escreve(&arv, "ABACAXI", 7);
-
-        //teste do metodo de busca
-        //std::cout << "\nTeste Busca" << "\n";
-        //arvString.busca(&arvString, "João");
-
-        //teste do destrutor
-        std::cout << "\nTeste Destrutores" << "\n";
+        //-------------------------
+        //Testa Busca
+        //-------------------------
+        std::cout << "\nTeste Busca" << "\n";
+        busca(ArvoreTrie, "ABACATE")? std::cout << "sim\n" :
+                             std::cout << "não\n";
+        busca(ArvoreTrie, "GILBERTO")? std::cout << "sim\n" :
+                               std::cout << "não\n";
 
         return 0;
     }
