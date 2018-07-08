@@ -8,41 +8,32 @@ int main(){
     std::cout << "Lista Complementar - Exercicio 5 [ Gabriel Sansigolo ]" << "\n\n";
 
     //-------------------------
-    //Novo Grafo
+    //Declara o Array Teste
     //-------------------------
-    struct grafo *grafoTeste = novoGrafo();
+    std::vector<int> S = {14, 11, 7, 16, 5, 12, 3, 19, 8, 21, 6, 17, 13};
 
     //-------------------------
-    //Salva Adjacências
+    //Cria o Max Heap
     //-------------------------
-    salvaNo(grafoTeste, 0, 'B');
-    salvaNo(grafoTeste, 0, 'D');
-    salvaNo(grafoTeste, 0, 'E');
+    std::vector<int> mahHeap = novoMaxHeap(S, 13);
 
-    salvaNo(grafoTeste, 1, 'C');
-    salvaNo(grafoTeste, 1, 'A');
-    salvaNo(grafoTeste, 1, 'E');
+    //-------------------------
+    //Testa o Heap (Max)
+    //-------------------------
+    if(max(mahHeap)==21){
+        std::cout << "Sucesso!" << "\n";
+    } else{
+        std::cout << "Falha!" << "\n";
+    }
 
-    salvaNo(grafoTeste, 2, 'B');
-    salvaNo(grafoTeste, 2, 'D');
-    salvaNo(grafoTeste, 2, 'F');
-
-    salvaNo(grafoTeste, 3, 'A');
-    salvaNo(grafoTeste, 3, 'C');
-    salvaNo(grafoTeste, 3, 'F');
-    salvaNo(grafoTeste, 3, 'E');
-
-    salvaNo(grafoTeste, 4, 'A');
-    salvaNo(grafoTeste, 4, 'D');
-    salvaNo(grafoTeste, 4, 'F');
-    salvaNo(grafoTeste, 4, 'B');
-
-    salvaNo(grafoTeste, 5, 'C');
-    salvaNo(grafoTeste, 5, 'D');
-    salvaNo(grafoTeste, 5, 'E');
-    salvaNo(grafoTeste, 5, 'G');
-
-    salvaNo(grafoTeste, 6, 'F');
+    //-------------------------
+    //Testa o Heap (Min)
+    //-------------------------
+    if(min(mahHeap)==3){
+        std::cout << "Sucesso!" << "\n";
+    } else{
+        std::cout << "Falha!" << "\n";
+    }
 
     return 0;
 }
